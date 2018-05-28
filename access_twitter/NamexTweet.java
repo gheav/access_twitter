@@ -1,11 +1,7 @@
-//unduh twitter4j di http://twitter4j.org/en/index.html
-//masukkan ke project     
-//twitter4j-async-a.b.c.jar
-//    twitter4j-core-a.b.c.jar
-//    twitter4j-media-support-a.b.c.jar
-//    twitter4j-stream-a.b.c.jar
-//ubah consumer key, consumer key secret, access token, access token secret sesuai akun twitter anda
+ package javaapplication3;
 
+import javax.swing.*;
+import java.awt.event.*;
 
 import java.io.IOException;
 
@@ -16,9 +12,26 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
 
-public class NamexTweet {
-    private final static String CONSUMER_KEY = "vrARZMJpd1YEzLn9TsjvjhvjhvjvCKXL8O";
-    private final static String CONSUMER_KEY_SECRET = "8vrlGTBcMiYynvZg5B6NeBGWCdhggswsfM33DPW0WizBe61G64vuPV6juL";
+public class gui_twitter extends JFrame
+ {
+	gui_twitter()
+	{
+	 setTitle("Tugas Akses twitter" );
+	 setLocation(300,100 );
+	 setSize(900,420 );
+	 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
+	}
+	JTextArea hasil=new JTextArea();
+	
+	void KomponenVisual()
+	{
+	 getContentPane().add(hasil );
+	 hasil.setBounds(10,230,270,140 );
+	 setVisible(true );
+	}
+	
+    private final static String CONSUMER_KEY = "cV0X19HXfdgdfgdg34DFSwRS6nqb";
+    private final static String CONSUMER_KEY_SECRET = "mY09iMC3rfDZnaHYydfgsddsfIG7oaoUtqdfgeresdfsbtwH6TsuKrh";
 
     public void start() throws TwitterException, IOException {
 
@@ -34,17 +47,17 @@ public class NamexTweet {
 	twitter.setOAuthAccessToken(oathAccessToken);
 	// end of difference
 
-	twitter.updateStatus("Hi, im updating status again from Namex Tweet for Demo");
+	//twitter.updateStatus("Hi, im updating status again from Namex Tweet for Demo");
 
-	System.out.println("\nMy Timeline:");
+	hasil.append("\nMy Timeline:");
 
 	// I'm reading your timeline
 	ResponseList<Status> list = twitter.getHomeTimeline();
 	for (Status each : list) {
 
-	    System.out.println("Sent by: @" + each.getUser().getScreenName()
+	    hasil.append("Sent by: @" + each.getUser().getScreenName()
 		    + " - " + each.getUser().getName() + "\n" + each.getText()
-		    + "\n");
+		    + "\n"+ "\n");
 	}
 
     }
@@ -52,15 +65,18 @@ public class NamexTweet {
     private String getSavedAccessTokenSecret() {
 	// consider this is method to get your previously saved Access Token
 	// Secret
-	return "ztu6PRjNw34IEreEEyACkXe8LdssjcjDCVdgtdss9pwjXOmx3hmg1s";
+	return "vIYcjr8wY1jghfjkfkyuOqbi5tgGbE18ESsefsfsg3la4DFM53T";
     }
 
     private String getSavedAccessToken() {
 	// consider this is method to get your previously saved Access Token
-	return "83576715-Mg01RbDc6Vn7dgd456sxny2GispWjdRYT5edtdEIlEK6oBwlybV";
+	return "83576715-EPVefsfsn5JtGeNX8H0nPRxsdfsxgcyJdvs7bwHJ";
     }
 
-    public static void main(String[] args) throws Exception {
-	new NamexTweet().start();
+    public static void main(String[] args) throws Exception
+    	 {
+		gui_twitter e5=new gui_twitter();
+		e5.start();
+		e5.KomponenVisual();
     }
 }
